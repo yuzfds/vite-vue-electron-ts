@@ -8,13 +8,14 @@
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:electron": "node script/build.js",
     "test:elec": "electron ./dist/electron.js",
-    "dist": "npm run build:all && electron-builder build",
-    "postinstall": "husky install"
+    "dist": "npm run build:all && electron-builder build"
   },
   "dependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-json": "^4.1.0",
@@ -36,7 +37,7 @@
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
-    "husky": "^6.0.0",
+    "husky": "4",
     "lint-staged": "^10.5.4",
     "minimist": "^1.2.5",
     "prettier": "^2.2.1",
@@ -49,13 +50,13 @@
   "lint-staged": {
     "**/**.{js,ts,json,md,vue}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
   "build": {

@@ -45,6 +45,7 @@ export default defineComponent({
   },
   setup: () => {
     const count = ref(0)
+    const i = 0
     return { count }
   },
 })
