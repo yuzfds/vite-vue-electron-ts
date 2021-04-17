@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {join} from 'path';
+import viteServerStartedHook from './plugins/vite-server-started-hook';
+import {devElectron} from './script/dev';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   root: join(__dirname, 'src/render'),
-  plugins: [vue()],
+  plugins: [vue(), viteServerStartedHook(devElectron)],
   base:'./',
   server: {
     port: 8099

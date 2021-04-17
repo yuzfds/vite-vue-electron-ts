@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "main": "dist/electron.js",
   "scripts": {
-    "dev:all": "concurrently -n=vue,ele -c=green,blue \"npm run dev:vue\" \"npm run dev:electron\"",
     "build:all": "npm run build:vue && npm run build:electron",
-    "dev:vue": "vite",
+    "dev": "vite",
     "build:vue": "vue-tsc --noEmit && vite build",
-    "dev:electron": "node script/build.js --watch",
     "build:electron": "node script/build.js",
     "test:elec": "electron ./dist/electron.js",
-    "dist": "npm run build:vue && npm run build:electron && electron-builder build"
+    "dist": "npm run build:all && electron-builder build"
   },
   "dependencies": {
     "vue": "^3.0.5"
