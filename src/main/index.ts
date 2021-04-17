@@ -5,7 +5,7 @@ const url = require('url')
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
     // webPreferences:{
 
     // }
@@ -17,8 +17,8 @@ function createWindow() {
       url.format({
         pathname: path.join(__dirname, '../dist/render/index.html'),
         protocol: 'file',
-        slashes: true
-      })
+        slashes: true,
+      }),
     )
   }
 }
