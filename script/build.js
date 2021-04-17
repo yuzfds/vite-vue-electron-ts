@@ -13,7 +13,6 @@ dotenv.config({path: path.join(__dirname, '../.env')})
 const argv = minimist(process.argv.slice(2))
 const opt = options('production')
 
-
 if(argv.watch){
     waitOn().then(msg=>{
         let child;
@@ -25,7 +24,7 @@ if(argv.watch){
         watcher.on('event', ev=>{
             if(ev.code === 'END') {
                 if(child) child.kill()
-                child = spawn(electron, [path.join(__dirname, `../${packageJSON.main}`)])
+                child = spawn(electron, [path.join(__dirname, '../src/main/index.ts')])
                 console.log(chalk.green('启动Electron....'))
             }
         })

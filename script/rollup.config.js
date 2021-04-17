@@ -9,7 +9,7 @@ module.exports = (env = 'production') =>{
     const options = {
         input: path.join(__dirname, '../src/main/index.ts'),
         output: {
-            file: path.join(__dirname, '../dist/bundle.js'),
+            file: path.join(__dirname, '../dist/electron.js'),
             format: 'cjs',
             name: 'ElectronMainBundle',
             sourcemap: false
