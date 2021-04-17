@@ -25,14 +25,30 @@
     "chalk": "^4.1.0",
     "concurrently": "^6.0.1",
     "dotenv": "^8.2.0",
+    "electron": "^12.0.2",
     "electron-builder": "^22.10.5",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "minimist": "^1.2.5",
     "rollup-plugin-esbuild": "^3.0.2",
     "rollup-plugin-node-externals": "^2.2.0",
     "typescript": "^4.1.3",
     "vite": "^2.1.3",
-    "vue-tsc": "^0.0.8",
-    "electron": "^12.0.2"
+    "vue-tsc": "^0.0.8"
+  },
+  "lint-staged": {
+    "**/**.{js,ts,json,md,vue}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "build": {
     "appId": "com.yuzf.app",
@@ -40,9 +56,9 @@
     "directories": {
       "output": "app"
     },
-    "win":{
+    "win": {
       "icon": "",
-      "target":[
+      "target": [
         "nsis"
       ]
     },
